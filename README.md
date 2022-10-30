@@ -1,5 +1,5 @@
 # subscribe_logs
-The dYdX balancer flashload related attack analizer
+The dYdX balancer flashload related attack analyser
 
 ## first step
 + cd suscribe_logs
