@@ -4,7 +4,7 @@ var path = require('path')
 async function writeHtml (tableInOne) {  
     var html = "";      
     html += '<p><br/>' + 
-        '<p>The dYdX balancer flashload related attack.</p>' +
+        '<p>The dYdX balancer flashload related attack analizer.</p>' +
         '<p>Enjoin it!!<p/><br/>'
         '</p>';      
 
