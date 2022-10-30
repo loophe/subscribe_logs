@@ -6,7 +6,6 @@ logs/
 public/
 venv/
 test/
-table_express.js
 templates/
 4byte_function_cache.sqlite
 
