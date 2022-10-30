@@ -1,0 +1,11 @@
+node_modules/
+.env
+providerTest.js
+provider.js
+logs/
+public/
+venv/
+test/
+
+
+
