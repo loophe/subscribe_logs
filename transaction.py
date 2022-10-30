@@ -9,10 +9,14 @@ from ethtx.models.decoded_model import (
     DecodedCall,
 )
 from ethtx.models.objects_model import Transaction, Event, Block, Call
-from flask import Flask
+from flask import Flask, render_template
 from flask import request
 
 app = Flask(__name__)
+
+@app.route('/tx/')
+def index():
+    return render_template('index.html')
 
 @app.route('/tx/<txHash>', methods = ['GET', 'POST', 'DELETE'])
 def user(txHash):

@@ -6,6 +6,9 @@ logs/
 public/
 venv/
 test/
+table_express.js
+templates/
+
 
 
 
