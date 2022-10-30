@@ -13,7 +13,8 @@ async function request(hash, blockNumber){
         n ++
         return tableInOne
     }catch(e){
-        console.log(e)
+        console.log('status',e.response.status)
+        console.log('statusText',e.response.statusText)
     }       
 }
 module.exports= {
