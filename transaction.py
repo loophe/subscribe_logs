@@ -1,3 +1,5 @@
+import os
+from dotenv import load_dotenv
 from ethtx import EthTx, EthTxConfig
 from ethtx.models.decoded_model import DecodedTransaction
 from ethtx.models.w3_model import W3Transaction, W3Block, W3Receipt, W3CallTree
@@ -12,7 +14,15 @@ from ethtx.models.objects_model import Transaction, Event, Block, Call
 from flask import Flask, render_template
 from flask import request
 
+load_dotenv()
+
+mongo_user = os.getenv('MONGO_USER_ID')
+mongo_password = os.getenv('MONGO_USER_PASSWORD')
+etherscan = os.getenv('ETHERSCAN_KEY')
+quickNode = os.getenv('QUICK_NODE_KEY')
+
 app = Flask(__name__)
+
 
 @app.route('/tx/')
 def index():
@@ -24,11 +34,11 @@ def user(txHash):
         """return the information for <user_id>"""
             
         ethtx_config = EthTxConfig(
-            mongo_connection_string="mongodb://localhost:27017/ethtx",  ##MongoDB connection string,
-            etherscan_api_key="GUWMPJUZXSIIZPW5ZWZ1AU3NV56AHF44AH",  ##Etherscan API key,
+            mongo_connection_string="mongodb://"+mongo_user+":"+mongo_password+"@144.76.234.79:27017/ethtx?authSource=admin",  ##MongoDB connection string,
+            etherscan_api_key=etherscan,  ##Etherscan API key,
             web3nodes={
                 "mainnet": {
-                    "hook": "https://polished-skilled-emerald.discover.quiknode.pro/1326276633f571900198e5cdf256d131c0710e7d/",  # multiple nodes supported, separate them with comma
+                    "hook": "https://polished-skilled-emerald.discover.quiknode.pro/"+quickNode,  # multiple nodes supported, separate them with comma
                     "poa": False  # represented by bool value
                 }
             },

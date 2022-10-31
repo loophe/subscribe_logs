@@ -15,6 +15,7 @@ async function request(hash, blockNumber){
     }catch(e){
         console.log('status',e.response.status)
         console.log('statusText',e.response.statusText)
+        return tableInOne
     }       
 }
 module.exports= {
