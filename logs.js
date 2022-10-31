@@ -5,7 +5,7 @@ const {writeHtml} = require('./writeHtml.js')
 async function logs (oracle, topic, block){ 
     // var n = 0  
     web3Ws.eth.subscribe('logs',{
-        fromBlock: block, 
+        // fromBlock: block, 
         address:oracle,
         topics:[topic]
     }, async function(error,result){
