@@ -6,9 +6,9 @@ async function writeHtml (tableInOne) {
     html += 
         '<head> <meta charset="UTF-8"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous"><title>FlaskBlog</title> </head>' +
         
-        '<h3>The flashload related attack analyser.</h3>' +
-        '<h4>dYdX balancer included </h4>'
-        '<h4>Enjoy it!!</h4>'     
+        '<h3>The flashloan related attack analyser.</h3>' +
+        '<h4>AAVE UniswapV3 dYdX balancer included </h4>' +
+        '<h4>On Ethereum mainnet enjoy it!!</h4>'     
 
     for (  n in tableInOne ){
         var obj = tableInOne[tableInOne.length-n-1]

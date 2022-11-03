@@ -3,7 +3,6 @@ from dotenv import load_dotenv
 from ethtx import EthTx, EthTxConfig
 from ethtx.models.decoded_model import DecodedTransaction
 from ethtx.models.w3_model import W3Transaction, W3Block, W3Receipt, W3CallTree
-from typing import List, Optional
 from ethtx.models.decoded_model import (
     # DecodedTransfer,
     # DecodedBalance,
@@ -53,7 +52,6 @@ def user(txHash):
 
 
         web3provider = ethtx.providers.web3provider
-
 
 
         # read raw transaction data directly from the node
