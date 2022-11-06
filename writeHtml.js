@@ -1,5 +1,6 @@
 const fs = require('fs');
 var path = require('path')
+const { showRules } = require('./showRules.js')
 
 async function writeHtml (tableInOne) {  
     var html = "";      
@@ -13,40 +14,44 @@ async function writeHtml (tableInOne) {
     for (  n in tableInOne ){
         var obj = tableInOne[tableInOne.length-n-1]
         var tag = `<a href=https://phalcon.blocksec.com/tx/eth/${obj.tx_hash}>` + obj.tx_hash +"</a>"
-        var transaction1 = `<p style="line-height:50%">from : ${obj.transactions[0].id} = ${obj.transactions[0].address}</p>`
-        
-        html += '<p><br/>' + 
-        '<p style="line-height:80%">Time : ' + obj.time + '</p>' +
-        '<p style="line-height:80%">id : ' + obj.id + '</p>' +
-        '<p style="line-height:80%">Hash : ' + tag + '</p>' +
-        '<p style="line-height:50%">Transactions :' + transaction1 + 
-        '</p>';        
+        var transactionObject = obj.transactions
+        var transaction0 = `<p style="line-height:50%">from : ${transactionObject[0].id} = ${transactionObject[0].address}</p>`
+        var isToBeShown = showRules(transactionObject)
+        if ( isToBeShown ){
+     
+            html += '<p><br/>' + 
+            '<p style="line-height:80%">Time : ' + obj.time + '</p>' +
+            '<p style="line-height:80%">id : ' + obj.id + '</p>' +
+            '<p style="line-height:80%">Hash : ' + tag + '</p>' +
+            '<p style="line-height:50%">Transactions :' + transaction0 + 
+            '</p>';        
 
-        for ( i in obj.transactions ) {
-            // 
-            if (i>0){
-                let id = obj.transactions[i].id
-                if (id == 1){
-                    var transaction = `<p style="line-height:50%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to : ${obj.transactions[i].id} = ${obj.transactions[i].address}</p>`
-                    html += transaction;  
-                } 
-                if (id == 2){
-                    var transaction = `<p style="line-height:50%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to : ${obj.transactions[i].id} = ${obj.transactions[i].address}</p>`
-                    html += transaction;  
+            for ( i in transactionObject ) {
+                // 
+                if (i>0){
+                    let id = transactionObject[i].id
+                    if (id == 1){
+                        var transaction = `<p style="line-height:50%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to : ${transactionObject[i].id} = ${transactionObject[i].address}</p>`
+                        html += transaction;  
+                    } 
+                    if (id == 2){
+                        var transaction = `<p style="line-height:50%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to : ${transactionObject[i].id} = ${transactionObject[i].address}</p>`
+                        html += transaction;  
+                    }  
+                    if (id == 3){
+                        var transaction = `<p style="line-height:50%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to : ${transactionObject[i].id} = ${transactionObject[i].address}</p>`
+                        html += transaction;  
+                    }   
+                    if (id == 4){
+                        var transaction = `<p style="line-height:50%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to : ${transactionObject[i].id} = ${transactionObject[i].address}</p>`
+                        html += transaction;  
+                    } 
+                    if (id == 5){
+                        var transaction = `<p style="line-height:50%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to : ${transactionObject[i].id} = ${transactionObject[i].address}</p>`
+                        html += transaction;  
+                    }  
                 }  
-                if (id == 3){
-                    var transaction = `<p style="line-height:50%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to : ${obj.transactions[i].id} = ${obj.transactions[i].address}</p>`
-                    html += transaction;  
-                }   
-                if (id == 4){
-                    var transaction = `<p style="line-height:50%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to : ${obj.transactions[i].id} = ${obj.transactions[i].address}</p>`
-                    html += transaction;  
-                } 
-                if (id == 5){
-                    var transaction = `<p style="line-height:50%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to : ${obj.transactions[i].id} = ${obj.transactions[i].address}</p>`
-                    html += transaction;  
-                }  
-            }  
+            }
         }
     }
 
