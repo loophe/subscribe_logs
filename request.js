@@ -13,8 +13,9 @@ async function request(hash, blockNumber){
         n ++
         return tableInOne
     }catch(e){
-        console.log('status',e.response.status)
-        console.log('statusText',e.response.statusText)
+        // console.log('status',e.response.status)
+        // console.log('statusText',e.response.statusText)
+        console.log(e)
         return tableInOne
     }       
 }
